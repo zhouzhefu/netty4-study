@@ -13,12 +13,11 @@ import io.netty.handler.codec.MessageToByteEncoder;
  * to simplify the code
  * @author winnie
  */
-public class TimePojoEncoderPlus extends MessageToByteEncoder {
+public class TimePojoEncoderPlus extends MessageToByteEncoder<UnixTime> {
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
-        UnixTime unixTime = (UnixTime) msg;
-        out.writeInt(unixTime.value());
+    protected void encode(ChannelHandlerContext ctx, UnixTime msg, ByteBuf out) throws Exception {
+        out.writeInt(msg.value());
         System.out.println("End of TimePojoEncoderPlus");
     }
     
