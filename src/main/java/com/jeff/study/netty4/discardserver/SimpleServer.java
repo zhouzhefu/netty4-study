@@ -35,7 +35,7 @@ public class SimpleServer {
 
             @Override
             protected void initChannel(SocketChannel c) throws Exception {
-                c.pipeline().addLast(new TimeServerHandler());
+                c.pipeline().addLast(new TimePojoEncoderPlus(), new TimePojoServerHandler());
             }
          })
          .option(ChannelOption.SO_BACKLOG, 128)
